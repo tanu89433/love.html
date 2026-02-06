@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayesh ❤️ Forever</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#7a2c3d,#b14b5f);
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* HEART RAIN */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear infinite;
+  opacity:0.85;
+}
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  width:92%;
+  max-width:370px;
+  border-radius:22px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  position:relative;
+}
+
+h1{
+  margin-top:0;
+  color:#7a2c3d;
+}
+
+.name{
+  font-size:21px;
+  color:#444;
+  margin-bottom:10px;
+}
+
+.message{
+  font-size:16px;
+  color:#333;
+  margin-bottom:12px;
+  line-height:1.4;
+}
+
+.small{
+  font-size:14px;
+  color:#555;
+  margin-bottom:18px;
+}
+
+.btn{
+  border:none;
+  padding:10px 18px;
+  margin:6px;
+  border-radius:20px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.yes{ background:#e84c7f; color:white; }
+.no{ background:#ddd; }
+.music{ background:#7a2c3d; color:white; }
+
+/* KISS */
+.kiss{
+  position:absolute;
+  font-size:42px;
+  animation:kissMove 2s ease forwards;
+}
+@keyframes kissMove{
+  0%{ transform:scale(0) translateY(40px); opacity:0; }
+  40%{ transform:scale(1.2) translateY(0); opacity:1; }
+  100%{ transform:scale(1) translateY(-80px); opacity:0; }
+}
+
+.result{
+  margin-top:14px;
+  font-size:15px;
+  color:#7a2c3d;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="song">
+  <source src="dooron_dooron.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+  <h1>Happy Valentine’s Day 💖</h1>
+
+  <div class="name">Jayesh 😊</div>
+
+  <div class="message">
+    Tu sobat bolayla khup chan vattat 🌸  
+    Ani tu sobat time spend kela ki मन शांत होतं 💗
+  </div>
+
+  <div class="small">
+    Mhanun ek simple prashna…  
+    <br>Will you be my Valentine? 😊
+  </div>
+
+  <button class="btn yes" onclick="yesClick()">Yes 😊</button>
+  <button class="btn no" onclick="noClick()">No 😅</button>
+
+  <br>
+  <button class="btn music" onclick="playSong()">Play Song 🎶</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function playSong(){
+  document.getElementById("song").play();
+}
+
+function yesClick(){
+  document.getElementById("result").innerHTML =
+  "He aikun khup special vattla 🥹💖";
+
+  playSong();
+  showKiss();
+}
+
+function noClick(){
+  document.getElementById("result").innerHTML =
+  "Kahi problem nahi… apan friends ahot 😊";
+}
+
+function showKiss(){
+  const kiss=document.createElement("div");
+  kiss.className="kiss";
+  kiss.innerHTML="😘";
+  kiss.style.left="50%";
+  kiss.style.top="55%";
+  kiss.style.transform="translateX(-50%)";
+  document.getElementById("card").appendChild(kiss);
+
+  setTimeout(()=>kiss.remove(),2000);
+}
+
+/* HEART RAIN */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
